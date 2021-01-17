@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="form-group mb-4">
+    <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search">
+  </div>
+  <table class="table table-striped table-bordered table-sm"
+         *ngIf="(cars | filter: searchText).length >0; else noResults">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th colspan="2">Owner</th>
+      <th [mdbTableSort]="cars" sortBy="brand">Brand
+        <div class="float-right">
+          <div class="triangle-up"></div>
+          <div class="triangle-down"></div>
+        </div>
+      </th>
+      <th [mdbTableSort]="cars" sortBy="type">Type
+        <div class="float-right">
+          <div class="triangle-up"></div>
+          <div class="triangle-down"></div>
+        </div>
+      </th>
+      <th [mdbTableSort]="cars" sortBy="mileage">Mileage
+        <div class="float-right">
+          <div class="triangle-up"></div>
+          <div class="triangle-down"></div>
+        </div>
+      </th>
+      <th [mdbTableSort]="cars" sortBy="yearOfManufacture">Year of manufacture
+        <div class="float-right">
+          <div class="triangle-up"></div>
+          <div class="triangle-down"></div>
+        </div>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="mat-row" *ngFor="let car of cars | filter: searchText; let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{ car.user.firstName }}</td>
+      <td>{{ car.user.lastName }}</td>
+      <td>{{ car.brand }}</td>
+      <td>{{ car.type}}</td>
+      <td>{{ car.mileage }}</td>
+      <td>{{ car.yearOfManufacture }}</td>
+
+    </tr>
+    </tbody>
+  </table>
+  <mat-paginator #paginator [pageSizeOptions]="[10, 25, 100]" [pageSize]="10" [length]="totalElements"
+                 (page)="nextPage($event)">
+  </mat-paginator>
+  <ng-template #noResults>
+    <p>No results found for "{{searchText}}".</p>
+  </ng-template>
+</div>

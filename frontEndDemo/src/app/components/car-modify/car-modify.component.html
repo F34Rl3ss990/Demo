@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">
+            Brand
+          </label>
+          <input type="text" class="form-control" placeholder="Type the brand..."
+                 formControlName="brand" #brand [(ngModel)]="car.brand"/>
+        </div>
+        <div *ngIf="angForm.controls['brand'].invalid && (angForm.controls['brand'].dirty ||
+      angForm.controls['brand'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['brand'].errors.required">
+            Brand is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4">
+            Type
+          </label>
+          <input type="text" class="form-control" placeholder="Type the type..."
+                 formControlName="type" #type [(ngModel)]="car.type"/>
+        </div>
+        <div *ngIf="angForm.controls['type'].invalid && (angForm.controls['type'].dirty ||
+      angForm.controls['type'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['type'].errors.required">
+            Type is required.
+          </div>
+        </div>
+
+          <div class="form-group">
+            <label class="col-md-4">
+              Brand
+            </label>
+            <input type="text" class="form-control" placeholder="Type the brand..."
+                   formControlName="brand" #brand [(ngModel)]="car.brand"/>
+          </div>
+          <div *ngIf="angForm.controls['brand'].invalid && (angForm.controls['brand'].dirty ||
+      angForm.controls['brand'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['brand'].errors.required">
+              Brand is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">
+              Mileage
+            </label>
+            <input type="text" class="form-control" placeholder="Type the mileage..."
+                   formControlName="mileage" #mileage [(ngModel)]="car.mileage"/>
+          </div>
+          <div *ngIf="angForm.controls['mileage'].invalid && (angForm.controls['mileage'].dirty ||
+      angForm.controls['mileage'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['mileage'].errors.required">
+              Mileage is required.
+            </div>
+            <div *ngIf="angForm.controls['mileage'].errors.max">
+              Can't be more than 999999.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">
+              Year of manufacture
+            </label>
+            <input type="text" class="form-control" placeholder="Type the year of manufacture..."
+                   formControlName="brand" #yearOfManufacture [(ngModel)]="car.yearOfManufacture"/>
+          </div>
+          <div *ngIf="angForm.controls['yearOfManufacture'].invalid && (angForm.controls['yearOfManufacture'].dirty ||
+      angForm.controls['yearOfManufacture'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['yearOfManufacture'].errors.required">
+              Year of manufacture is required.
+            </div>
+            <div *ngIf="angForm.controls['yearOfManufacture'].errors.max">
+              Year of manufacture must be between 1900 and nowadays.
+            </div>
+            <div *ngIf="angForm.controls['yearOfManufacture'].errors.min">
+              Year of manufacture must be between 1900 and nowadays.
+            </div>
+          </div>
+        <div class="form-group" style="margin-bottom: 0px">
+          <button (click)="backClicked()" style="margin-right:10px" class="btn btn-primary" type="button">Back</button>
+          <button (click)="modifyCar(brand.value, type.value, mileage.value, yearOfManufacture.value)"
+                  type="submit" [disabled]="angForm.pristine || angForm.invalid"
+                  class="btn btn-primary">Modify Article
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
