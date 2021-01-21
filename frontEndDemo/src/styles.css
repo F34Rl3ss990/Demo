@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.table td, .table th{
+  vertical-align: inherit!important;
+  text-align:center;
+}
+
+.form-group {
+  padding-top:15px;
+  margin:0px!important;
+}
+
+.alert.alert-danger{
+  margin:0px!important;
+}
+h2 {
+  color:green;
+  padding-top:10px;
+  text-align: center;
+}
+h3{
+  text-align: center;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 6px solid black;
+}
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 6px solid black;
+  margin-bottom: 1px;
+  padding-top: 7px;
+}
+.card-body{
+  padding-top: 5px!important;
+}
+.container{
+  margin-top: 5px;
+}

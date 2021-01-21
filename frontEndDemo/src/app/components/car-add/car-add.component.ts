@@ -14,7 +14,7 @@ export class CarAddComponent implements OnInit {
 
   angForm: FormGroup;
   userId: number;
-  date: Date;
+  date: Date = new Date();
 
   constructor(private fb: FormBuilder, private cs: CarService,
               private router: Router, private route: ActivatedRoute,

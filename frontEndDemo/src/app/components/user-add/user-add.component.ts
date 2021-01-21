@@ -45,15 +45,14 @@ export class UserAddComponent implements OnInit {
     this.angForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.pattern(patternForName), Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.pattern(patternForName), Validators.minLength(3)]],
-      email: ['', Validators.required, Validators.pattern(patternForName), Validators.email]
+      email: ['', Validators.required]
     });
   }
 
   addUser(firstName, lastName, email) {
-    this.us.addUser(firstName, lastName, email).subscribe(res => {
-        this.router.navigate(['user-get-page']);
-      }
+    this.us.addUser(firstName, lastName, email).subscribe(res => {}
     );
+    this.router.navigate(['user-get-page']);
   }
 
   ngOnInit(): void {

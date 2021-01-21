@@ -22,17 +22,11 @@ export class UserGetPageComponent implements OnInit {
     this.getList({page: "0", size: "10"});
   }
 
-  deleteUser(id) {
-    this.us.deleteUser(id).subscribe(res => {
-    });
-    this.router.navigate(['successful-user-delete', id]);
-  }
-
   private getList(req) {
     this.loading = true;
     this.us.getUsers(req).subscribe(data => {
       this.users = data['content'];
-      this.totalElements = data.totalElements;
+      this.totalElements = data['totalElements'];
       this.loading = false;
     }, error => {
       this.loading = false;
@@ -46,4 +40,16 @@ export class UserGetPageComponent implements OnInit {
     this.getList(req);
   }
 
+  deleteUser(id) {
+    this.us.deleteUser(id).subscribe(res => {
+    });
+    this.reloadCurrentRoute();
+  }
+
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+  }
 }

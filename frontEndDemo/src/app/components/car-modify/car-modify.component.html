@@ -29,20 +29,6 @@
             Type is required.
           </div>
         </div>
-
-          <div class="form-group">
-            <label class="col-md-4">
-              Brand
-            </label>
-            <input type="text" class="form-control" placeholder="Type the brand..."
-                   formControlName="brand" #brand [(ngModel)]="car.brand"/>
-          </div>
-          <div *ngIf="angForm.controls['brand'].invalid && (angForm.controls['brand'].dirty ||
-      angForm.controls['brand'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['brand'].errors.required">
-              Brand is required.
-            </div>
-          </div>
           <div class="form-group">
             <label class="col-md-4">
               Mileage
@@ -64,7 +50,7 @@
               Year of manufacture
             </label>
             <input type="text" class="form-control" placeholder="Type the year of manufacture..."
-                   formControlName="brand" #yearOfManufacture [(ngModel)]="car.yearOfManufacture"/>
+                   formControlName="yearOfManufacture" #yearOfManufacture [(ngModel)]="car.yearOfManufacture"/>
           </div>
           <div *ngIf="angForm.controls['yearOfManufacture'].invalid && (angForm.controls['yearOfManufacture'].dirty ||
       angForm.controls['yearOfManufacture'].touched)" class="alert alert-danger">
@@ -82,7 +68,7 @@
           <button (click)="backClicked()" style="margin-right:10px" class="btn btn-primary" type="button">Back</button>
           <button (click)="modifyCar(brand.value, type.value, mileage.value, yearOfManufacture.value)"
                   type="submit" [disabled]="angForm.pristine || angForm.invalid"
-                  class="btn btn-primary">Modify Article
+                  class="btn btn-primary">Modify Car
           </button>
         </div>
       </form>

@@ -50,7 +50,7 @@
       <td>{{ car.type }}</td>
       <td>{{ car.mileage }}</td>
       <td>{{ car.yearOfManufacture }}</td>
-      <td><a [routerLink]="['/car-modify', car.Id]" class="btn btn-primary" style="color:white">Modify
+      <td><a [routerLink]="['/car-modify', car.carId]" class="btn btn-primary" style="color:white">Modify
         car</a></td>
       <td><a (click)="deleteCar(car.carId)" class="btn btn-danger" style="color:white">Delete car</a>
       </td>

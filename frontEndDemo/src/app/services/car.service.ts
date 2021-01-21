@@ -19,7 +19,7 @@ export class CarService {
       yearOfManufacture,
       userId
     };
-    return this.http.post(`${this.uri}addCar`, obj);
+    return this.http.post(`${this.uri}addCar`, obj, {responseType: 'text'});
   }
 
   getCars(req) {
@@ -29,7 +29,7 @@ export class CarService {
 
   getCarsByUserId(req) {
     const params = req;
-    return this.http.get(`${this.uri}getCarsByUserId`, {params});
+    return this.http.get(`${this.uri}getCarByUserId`, {params});
   }
 
   getCarById(id) {
@@ -50,7 +50,7 @@ export class CarService {
       mileage,
       yearOfManufacture,
     }
-    this.http.put(`${this.uri}modifyArticle/${carId}`, obj).subscribe(
+    this.http.put(`${this.uri}modifyCar/${carId}`, obj).subscribe(
       res => console.log('Done'));
   }
 }

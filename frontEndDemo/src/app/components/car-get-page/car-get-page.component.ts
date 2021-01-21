@@ -20,6 +20,7 @@ export class CarGetPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getList({page: "0", size: "10"});
+
   }
 
   private getList(req) {

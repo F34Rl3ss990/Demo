@@ -7,8 +7,7 @@
     <thead>
     <tr>
       <th>#</th>
-      <th colspan="2">Owner</th>
-      <th [mdbTableSort]="cars" sortBy="brand">Brand
+      <th [mdbTableSort]="cars" sortBy="type">Brand
         <div class="float-right">
           <div class="triangle-up"></div>
           <div class="triangle-down"></div>
@@ -37,8 +36,6 @@
     <tbody>
     <tr class="mat-row" *ngFor="let car of cars | filter: searchText; let i = index">
       <th scope="row">{{i + 1}}</th>
-      <td>{{ car.user.firstName }}</td>
-      <td>{{ car.user.lastName }}</td>
       <td>{{ car.brand }}</td>
       <td>{{ car.type}}</td>
       <td>{{ car.mileage }}</td>

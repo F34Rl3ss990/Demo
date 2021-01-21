@@ -32,7 +32,7 @@ public class CarController {
         this.userService = userService;
     }
 
-    @PostMapping("saveCar")
+    @PostMapping("addCar")
     public ResponseEntity<String> addCar(@Valid @RequestBody CarDTO carDTO) {
         Optional<User> user = userService.getById(carDTO.getUserId());
         if (!user.isPresent()) {
@@ -40,6 +40,16 @@ public class CarController {
         }
         carService.saveCar(carDTO);
         return new ResponseEntity<>("Successfully added!", HttpStatus.OK);
+    }
+
+    @GetMapping("getCarById/{id}")
+    public ResponseEntity<Car> openArticle(@PathVariable int id) {
+        Optional<Car> car = carService.getById(id);
+
+        if (!car.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(car.get());
     }
 
     @GetMapping("getCars")
@@ -54,6 +64,8 @@ public class CarController {
                                   @RequestParam(name = "id") int id) {
         return carService.getCarPageById(page, size, id);
     }
+
+
 
     @DeleteMapping("deleteCar/{id}")
     public ResponseEntity<String> deleteCar(@PathVariable int id) {

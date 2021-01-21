@@ -9,13 +9,13 @@ import {UserAddComponent} from './components/user-add/user-add.component';
 import {UserGetPageComponent} from './components/user-get-page/user-get-page.component';
 
 const routes: Routes = [
-  {path: 'car-add', component: CarAddComponent},
+  {path: 'car-add/:id', component: CarAddComponent},
   {path: 'car-get-by-user/:id', component: CarGetByUserComponent},
-  {path: 'car-get', component: CarGetPageComponent},
+  {path: 'car-get-page', component: CarGetPageComponent},
   {path: 'car-modify/:id', component: CarModifyComponent},
   {path: '', component: HomepageComponent},
   {path: 'user-add', component: UserAddComponent},
-  {path: 'user-page', component: UserGetPageComponent},
+  {path: 'user-get-page', component: UserGetPageComponent},
 ];
 
 @NgModule({

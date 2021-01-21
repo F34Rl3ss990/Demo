@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
-import { UserModifyComponent } from './components/user-modify/user-modify.component';
 import { CarModifyComponent } from './components/car-modify/car-modify.component';
 import { UserGetPageComponent } from './components/user-get-page/user-get-page.component';
 import { CarGetPageComponent } from './components/car-get-page/car-get-page.component';
@@ -15,15 +14,18 @@ import {SlimLoadingBarModule, SlimLoadingBarService} from 'ng2-slim-loading-bar'
 import {UserService} from './services/user.service';
 import {CarService} from './services/car.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {ReactiveFormsModule} from '@angular/forms';
-import {FilterPipe} from "./services/filterPipe.service";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FilterPipe} from './services/filterPipe.service';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserAddComponent,
     CarAddComponent,
-    UserModifyComponent,
     CarModifyComponent,
     UserGetPageComponent,
     CarGetPageComponent,
@@ -36,7 +38,12 @@ import {FilterPipe} from "./services/filterPipe.service";
     AppRoutingModule,
     SlimLoadingBarModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    MDBBootstrapModule.forRoot(),
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
   providers: [SlimLoadingBarService, UserService, CarService],
   exports: [AppComponent],

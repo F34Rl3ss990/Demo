@@ -15,7 +15,7 @@ export class CarModifyComponent implements OnInit {
   angForm: FormGroup;
   carId: number;
   car: any = {};
-  date: Date;
+  date: Date = new Date();
 
   constructor(private fb: FormBuilder, private cs: CarService,
               private router: Router, private route: ActivatedRoute,
@@ -46,7 +46,7 @@ export class CarModifyComponent implements OnInit {
 
   modifyCar(brand, type, mileage, yearOfManufacture) {
     this.cs.modifyCar(brand, type, mileage, yearOfManufacture, this.carId);
-    this.router.navigate(['car-get-page/', this.car.userId]);
+    this.router.navigate(['car-get-page/']);
   }
 
   backClicked() {

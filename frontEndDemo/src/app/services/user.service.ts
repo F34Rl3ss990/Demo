@@ -17,7 +17,7 @@ export class UserService {
       lastName,
       email
     };
-    return this.http.post(`${this.uri}addUser`, obj);
+    return this.http.post(`${this.uri}addUser`, obj, {responseType: 'text'});
   }
 
   getUserById(req) {
@@ -33,7 +33,7 @@ export class UserService {
   deleteUser(id) {
     return this
       .http
-      .delete(`${this.uri}deleteUser/${id}`);
+      .delete(`${this.uri}deleteUser/${id}`, {responseType: 'text'});
   }
 
 }

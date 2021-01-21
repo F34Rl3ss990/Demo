@@ -27,7 +27,7 @@ export class CarGetByUserComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.us.getUserById(params.id).subscribe(res => {
         this.user = res;
-        this.getList({page: "0", size: "10", id: this.user.user_id});
+        this.getList({page: "0", size: "10", id: this.user.userId});
       });
     });
   }
@@ -53,6 +53,12 @@ export class CarGetByUserComponent implements OnInit {
   deleteCar(id) {
     this.cs.deleteCar(id).subscribe(res => {
     });
-    this.router.navigate(['car-get-by-user/', this.user.userId]);
+    this.reloadCurrentRoute()
+  }
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }
