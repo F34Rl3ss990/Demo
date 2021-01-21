@@ -11,11 +11,13 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Builder
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class CarDTO {
+    @Builder
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class CarDTO {
+
+    private int carId;
 
     @NotNull
     @Max(999999)
@@ -26,7 +28,7 @@ public class CarDTO {
     private String type;
 
     @NotNull
-    @Pattern(regexp = "[A-Za-z]")
+    @Pattern(regexp = "^[a-zA-Z]+$")
     @Size(max = 60)
     private String brand;
 

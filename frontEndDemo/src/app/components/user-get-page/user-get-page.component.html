@@ -41,10 +41,10 @@
       <td>{{ user.firstName }}</td>
       <td>{{ user.lastName }}</td>
       <td>{{ user.email }}</td>
-      <td><a [routerLink]="['/car-add', user.userId]" class="btn btn-primary" style="color:white">Add Article</a>
+      <td><a [routerLink]="['/car-add', user.userId]" class="btn btn-primary" style="color:white">Add Car</a>
       </td>
       <td><a [routerLink]="['/car-get-by-user', user.userId]" class="btn btn-primary" style="color:white">View
-        Articles</a></td>
+        Cars</a></td>
       <td><a (click)="deleteUser(user.user_id)" class="btn btn-danger" style="button-size: 50%;color:white">Delete</a>
       </td>
     </tr>

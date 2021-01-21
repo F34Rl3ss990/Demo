@@ -1,7 +1,9 @@
 package com.example.demo.web.controller;
 
 import com.example.demo.persistance.entity.Car;
+import com.example.demo.persistance.entity.User;
 import com.example.demo.service.CarService;
+import com.example.demo.service.UserService;
 import com.example.demo.web.dto.CarDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,14 +20,24 @@ public class CarController {
 
     private CarService carService;
 
+    private UserService userService;
+
     @Autowired
     public void setCarService(CarService carService){
         this.carService = carService;
     }
 
+    @Autowired
+    public void setUserService(UserService userService){
+        this.userService = userService;
+    }
+
     @PostMapping("saveCar")
     public ResponseEntity<String> addCar(@Valid @RequestBody CarDTO carDTO) {
-
+        Optional<User> user = userService.getById(carDTO.getUserId());
+        if (!user.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
         carService.saveCar(carDTO);
         return new ResponseEntity<>("Successfully added!", HttpStatus.OK);
     }

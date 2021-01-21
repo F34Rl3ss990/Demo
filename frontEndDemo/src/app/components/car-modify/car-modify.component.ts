@@ -33,7 +33,6 @@ export class CarModifyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.route.params.subscribe(params => {
       this.carId = params.id;
     });

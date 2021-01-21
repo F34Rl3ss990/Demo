@@ -15,7 +15,6 @@ export class UserGetPageComponent implements OnInit {
   totalElements: number = 0;
   loading: boolean;
 
-
   constructor(private us: UserService, private router: Router) {
   }
 

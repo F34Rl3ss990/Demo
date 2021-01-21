@@ -37,10 +37,10 @@ public class CarServiceImpl implements CarService{
     public Page<Car> getCarPage(int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size);
         Page<Car> pageResult = carRepository.findAll(pageRequest);
-        List<Car> articles = pageResult
+        List<Car> cars = pageResult
                 .stream()
                 .collect(toList());
-        return new PageImpl<>(articles, pageRequest, pageResult.getTotalElements());
+        return new PageImpl<>(cars, pageRequest, pageResult.getTotalElements());
     }
 
     @Override
@@ -48,11 +48,11 @@ public class CarServiceImpl implements CarService{
         PageRequest pageRequest = PageRequest.of(page, size);
         Page<Car> pageResult = carRepository.findAll(pageRequest);
         Predicate<Car> contain = (Car item) -> item.getUser().getUserId() == id;
-        List<Car> articles = pageResult
+        List<Car> cars = pageResult
                 .stream()
                 .filter(contain)
                 .collect(toList());
-        return new PageImpl<>(articles, pageRequest, pageResult.getTotalElements());
+        return new PageImpl<>(cars, pageRequest, pageResult.getTotalElements());
     }
 
     @Override

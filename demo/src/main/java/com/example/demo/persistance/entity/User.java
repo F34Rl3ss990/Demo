@@ -1,9 +1,14 @@
 package com.example.demo.persistance.entity;
 
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.mysql.cj.protocol.x.Notice;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +19,9 @@ import java.util.Set;
 @Entity
 @Table(name = "user",
 uniqueConstraints =  @UniqueConstraint(columnNames = "email"))
-public class User {
+@JsonIgnoreProperties({"hibernate_lazy_initializer", "handler"})
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class User   {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,5 +45,5 @@ public class User {
             fetch = FetchType.LAZY,
             orphanRemoval = true
     )
-    private Set<Car> car = new HashSet<>();
+    private Set<Car> cars = new HashSet<>();
 }

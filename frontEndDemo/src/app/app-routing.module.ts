@@ -7,7 +7,6 @@ import {CarModifyComponent} from './components/car-modify/car-modify.component';
 import {HomepageComponent} from './components/homepage/homepage.component';
 import {UserAddComponent} from './components/user-add/user-add.component';
 import {UserGetPageComponent} from './components/user-get-page/user-get-page.component';
-import {UserModifyComponent} from './components/user-modify/user-modify.component';
 
 const routes: Routes = [
   {path: 'car-add', component: CarAddComponent},
@@ -17,7 +16,6 @@ const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'user-add', component: UserAddComponent},
   {path: 'user-page', component: UserGetPageComponent},
-  {path: 'user-modify/:id', component: UserModifyComponent}
 ];
 
 @NgModule({

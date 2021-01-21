@@ -39,5 +39,4 @@ export class CarGetPageComponent implements OnInit {
     req['size'] = event.pageSize.toString();
     this.getList(req);
   }
-
 }

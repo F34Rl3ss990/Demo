@@ -4,9 +4,7 @@ import com.example.demo.persistance.entity.User;
 import com.example.demo.persistance.repository.UserRepository;
 import com.example.demo.web.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,11 +33,6 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> getUsers(){
-        return userRepository.findAll();
-    }
-
-    @Override
     public Optional<User> getById(int userId) {
         return userRepository.findById(userId);
     }
@@ -58,6 +51,7 @@ public class UserServiceImpl implements UserService{
         User user = new User();
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
+        user.setEmail(userDTO.getEmail());
         return user;
     }
 }

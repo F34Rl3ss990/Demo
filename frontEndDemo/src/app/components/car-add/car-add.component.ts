@@ -46,5 +46,4 @@ export class CarAddComponent implements OnInit {
   backClicked() {
     this.location.back();
   }
-
 }

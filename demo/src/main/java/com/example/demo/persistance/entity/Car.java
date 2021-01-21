@@ -1,16 +1,15 @@
 package com.example.demo.persistance.entity;
 
-import com.example.demo.validation.annotation.MaxYear;
+import com.fasterxml.jackson.annotation.*;
+import com.mysql.cj.protocol.x.Notice;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.time.YearMonth;
-import java.util.Date;
+import java.io.Serializable;
 
 @Builder
 @Data
@@ -26,7 +25,7 @@ public class Car {
     private int carId;
 
     @Column(name = "brand")
-    @Pattern(regexp = "[A-Za-z]")
+    @Pattern(regexp = "^[a-zA-Z]+$")
     @Size(max = 60)
     private String brand;
 
@@ -38,10 +37,10 @@ public class Car {
     private int mileage;
 
     @Column(name = "year_of_manufacture")
-    @MaxYear
     private int yearOfManufacture;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_car_user")
+    @JsonIgnore
     private User user;
 }

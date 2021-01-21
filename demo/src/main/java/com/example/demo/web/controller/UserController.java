@@ -2,6 +2,7 @@ package com.example.demo.web.controller;
 
 import com.example.demo.persistance.entity.User;
 import com.example.demo.service.UserService;
+import com.example.demo.web.dto.CarDTO;
 import com.example.demo.web.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,13 +20,14 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    public void setUserService(UserService userService){
+    public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
     @PostMapping("addUser")
-    public void addUser(@Valid @RequestBody UserDTO userDTO) {
+    public ResponseEntity<String> addUser(@Valid @RequestBody UserDTO userDTO) {
         userService.saveUser(userDTO);
+        return new ResponseEntity<>("Successfully added!", HttpStatus.OK);
     }
 
     @GetMapping("getUsers")
@@ -33,7 +35,6 @@ public class UserController {
                            @RequestParam(name = "size", defaultValue = "10") int size) {
         return userService.getUsersPage(page, size);
     }
-
 
     @DeleteMapping("deleteUser/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable int id) {
