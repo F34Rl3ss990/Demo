@@ -1,0 +1,54 @@
+npx -p @angular/cli@9.1.6 ng new frontEndDemo
+
+npm install bootstrap
+npm install ng2-slim-loading-bar --save
+npm install --save @types/jquery
+npm install rxjs
+npm install --save rxjs-compat 
+ng add @ng-bootstrap/ng-bootstrap
+npm install jquery
+npm install --save @angular/material
+npm install @angular/cdk
+npm install angular-bootstrap-md --save
+
+    "scripts": ["node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+
+imports: Httpclientmodule
+slimloadingbarmodule
+providers: service + slim service
+
+mkdir components
+cd components
+
+ng g c user-add --skipTests=true
+ng g c car-add --skipTests=true
+ng g c car-modify --skipTests=true
+ng g c user-get-page --skipTests=true
+ng g c car-get-page --skipTests=true
+ng g c car-get-by-user --skipTests=true
+
+cd..
+mkdir services
+cd services
+
+ng g s user --skipTests=true
+ng g s car --skipTests=true
+
+SlimLoadingBarModule
+SlimLoadingBarService
+
+
+import { Location } from '@angular/common';
+html-el import reactive forms module
+
+
+   FilterPipe a komponensek közé
+filter pipe osztály létrehozása a keresésehez
+matpaginator-->
+MDBBootstrapModulesPro.forRoot()
+ MatPaginatorModule,
+FormsModule is kell
+
+
